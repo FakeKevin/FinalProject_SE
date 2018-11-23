@@ -4,13 +4,13 @@
 <html>
 <head>
 <meta http-equiv="Content-Type" content="text/html; charset=EUC-KR">
-<title>Insert title here</title>
+<title>Form</title>
 </head>
 <body>
 
 	<form action="HomeController" method="post">
 		Name: <input name="name" type="text" /><br /> 
-		Email: <input name="email" type="text" /><br />
+		Password: <input name="password" type="text" /><br />
 		<input type="submit" value="Go!" />
 	</form>
 
