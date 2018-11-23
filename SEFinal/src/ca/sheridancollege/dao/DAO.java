@@ -4,7 +4,7 @@ import org.hibernate.Session;
 import org.hibernate.SessionFactory;
 import org.hibernate.cfg.Configuration;
 
-import ca.sheridancollege.beans.Person;
+import ca.sheridancollege.beans.User;
 
 public class DAO {
 
@@ -12,11 +12,11 @@ public class DAO {
 			.configure("ca/sheridancollege/config/hibernate.cfg.xml")
 			.buildSessionFactory();
 
-	public void insertPerson(Person person) {
+	public void insertUser(User user) {
 		Session session = sessionFactory.openSession();
 		session.beginTransaction();
 
-		session.save(person);
+		session.save(user);
 
 		session.getTransaction().commit();
 		session.close();
