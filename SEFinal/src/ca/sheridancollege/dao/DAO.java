@@ -21,5 +21,14 @@ public class DAO {
 		session.getTransaction().commit();
 		session.close();
 	}
+	public void deleteUserById(int id) {
+		Session session = sessionFactory.openSession();
+		session.beginTransaction();
 
+		User toDelete = session.get(User.class, id);
+		session.delete(toDelete);
+		
+		session.getTransaction().commit();
+		session.close();
+	}
 }
