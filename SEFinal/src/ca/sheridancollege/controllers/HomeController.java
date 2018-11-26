@@ -8,7 +8,7 @@ import javax.servlet.http.HttpServlet;
 import javax.servlet.http.HttpServletRequest;
 import javax.servlet.http.HttpServletResponse;
 
-import ca.sheridancollege.beans.Person;
+import ca.sheridancollege.beans.User;
 import ca.sheridancollege.dao.DAO;
 
 /**
@@ -43,9 +43,9 @@ public class HomeController extends HttpServlet {
 		String name = request.getParameter("name");
 		String email = request.getParameter("email");
 		
-		Person person = new Person(name, email);
+		User user = new User(name, email);
 		
-		dao.insertPerson(person);
+		dao.insertUser(user);
 			
 		response.getWriter().append("<h1>It worked!</h1>");
 		

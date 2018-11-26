@@ -18,7 +18,7 @@ import lombok.Setter;
 @Entity
 @Getter
 @Setter
-public class Person implements Serializable {
+public class User implements Serializable {
 	
 	@Id
 	@GeneratedValue
@@ -27,7 +27,7 @@ public class Person implements Serializable {
 	private String email;
 
 	
-	public Person(String name, String email){
+	public User(String name, String email){
 		this.name = name;
 		this.email = email;
 	}
