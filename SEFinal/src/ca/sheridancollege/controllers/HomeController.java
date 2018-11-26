@@ -40,10 +40,11 @@ public class HomeController extends HttpServlet {
 	 */
 	protected void doPost(HttpServletRequest request, HttpServletResponse response) throws ServletException, IOException {
 			
-		String name = request.getParameter("name");
+		String firstName = request.getParameter("lastName");
+		String lastName = request.getParameter("firstName");
 		String email = request.getParameter("email");
 		
-		User user = new User(name, email);
+		User user = new User(firstName, lastName, email);
 		
 		dao.insertUser(user);
 			

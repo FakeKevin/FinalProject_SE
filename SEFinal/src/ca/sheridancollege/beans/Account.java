@@ -18,21 +18,16 @@ import lombok.Setter;
 @Entity
 @Getter
 @Setter
-public class User implements Serializable {
-	
+
+public class Account implements Serializable{
 	@Id
 	@GeneratedValue
-	private int id;
-	private String firstName;
-	private String lastName;
-	private String email;
+	int id;
+	String username;
+	String password;	
 
-	
-	public User(String fname, String lname, String email){
-		this.firstName = fname;
-		this.lastName = lname;
-		this.email = email;
+	public Account(String name, String pass) {
+		this.username = name;
+		this.password = pass;
 	}
 }
-
-
