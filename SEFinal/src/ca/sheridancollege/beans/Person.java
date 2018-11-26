@@ -8,11 +8,14 @@ import javax.persistence.Id;
 
 import lombok.AllArgsConstructor;
 import lombok.Data;
-import lombok.NoArgsConstructor;
+import lombok.Getter;
+import lombok.Setter;
 
 @AllArgsConstructor
 @Data
 @Entity
+@Getter
+@Setter
 public class Person implements Serializable {
 	
 	@Id
@@ -26,5 +29,6 @@ public class Person implements Serializable {
 		this.name = name;
 		this.email = email;
 	}
-
 }
+
+
