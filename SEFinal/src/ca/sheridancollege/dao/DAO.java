@@ -1,5 +1,9 @@
 package ca.sheridancollege.dao;
 
+import java.util.List;
+
+import javax.persistence.Query;
+
 import org.hibernate.Session;
 import org.hibernate.SessionFactory;
 import org.hibernate.cfg.Configuration;
@@ -53,6 +57,21 @@ public class DAO {
 		
 		session.getTransaction().commit();
 		session.close();
+	}
+	
+	public List<Account> queryAccount(String username, String password) {
+		Session session = sessionFactory.openSession();
+		session.beginTransaction();
+
+		Query query = session.getNamedQuery("Account.login");
+		
+		query.setParameter("username", username);
+		query.setParameter("password", password);
+		
+		List<Account> accountList = query.getResultList();
+		session.getTransaction().commit();
+		session.close();
+		return accountList;
 	}
 
 }
