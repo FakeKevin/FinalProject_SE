@@ -5,7 +5,6 @@ import java.io.Serializable;
 import javax.persistence.Entity;
 import javax.persistence.GeneratedValue;
 import javax.persistence.Id;
-import javax.persistence.NamedQuery;
 
 import lombok.AllArgsConstructor;
 import lombok.Data;
@@ -19,6 +18,7 @@ import lombok.Setter;
 @Entity
 @Getter
 @Setter
+
 public class Account implements Serializable{
 	@Id
 	@GeneratedValue
