@@ -43,8 +43,9 @@ public class HomeController extends HttpServlet {
 		String firstName = request.getParameter("lastName");
 		String lastName = request.getParameter("firstName");
 		String email = request.getParameter("email");
+		String loginPassword = request.getParameter("password");
 		
-		User user = new User(firstName, lastName, email);
+		User user = new User(firstName, lastName, email, loginPassword);
 		
 		dao.insertUser(user);
 			

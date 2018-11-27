@@ -12,20 +12,19 @@ import lombok.Data;
 import lombok.Getter;
 import lombok.NoArgsConstructor;
 import lombok.Setter;
-
+//Lombok and Hibernate import annotations
 @AllArgsConstructor
 @NoArgsConstructor
 @Data
 @Entity
 @Getter
 @Setter
-@NamedQuery(name = "Account.login", query = "from account where username = :username and password = :password")
 public class Account implements Serializable{
 	@Id
 	@GeneratedValue
-	int id;
-	String username;
-	String password;	
+	private int id;
+	private String username;
+	private String password;	
 
 	public Account(String name, String pass) {
 		this.username = name;

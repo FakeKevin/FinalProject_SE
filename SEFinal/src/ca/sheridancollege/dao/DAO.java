@@ -16,7 +16,7 @@ public class DAO {
 	SessionFactory sessionFactory = new Configuration()
 			.configure("ca/sheridancollege/config/hibernate.cfg.xml")
 			.buildSessionFactory();
-
+	//For creating users in the database
 	public void insertUser(User user) {
 		Session session = sessionFactory.openSession();
 		session.beginTransaction();
@@ -26,6 +26,7 @@ public class DAO {
 		session.getTransaction().commit();
 		session.close();
 	}
+	//This method deletes users by the selected id
 	public void deleteUserById(int id) {
 		Session session = sessionFactory.openSession();
 		session.beginTransaction();
@@ -36,7 +37,7 @@ public class DAO {
 		session.getTransaction().commit();
 		session.close();
 	}
-
+	//this method creates an account for the user
 	public void insertAccount(Account account) {
 		Session session = sessionFactory.openSession();
 		session.beginTransaction();
@@ -47,7 +48,7 @@ public class DAO {
 		session.close();
 		
 	}
-
+	//This method deletes the account of a user by the Id
 	public void deleteAccountById(int id) {
 		Session session = sessionFactory.openSession();
 		session.beginTransaction();
@@ -58,20 +59,20 @@ public class DAO {
 		session.getTransaction().commit();
 		session.close();
 	}
-	
-	public List<Account> queryAccount(String username, String password) {
+	//This method verifies the users credentials before logging in
+	public List<User> queryUser(String email, String password) {
 		Session session = sessionFactory.openSession();
 		session.beginTransaction();
 
-		Query query = session.getNamedQuery("Account.login");
+		Query query = session.getNamedQuery("User.login");
 		
-		query.setParameter("username", username);
+		query.setParameter("username", email);
 		query.setParameter("password", password);
 		
-		List<Account> accountList = query.getResultList();
+		List<User> userList = query.getResultList();
 		session.getTransaction().commit();
 		session.close();
-		return accountList;
+		return userList;
 	}
 
 }
