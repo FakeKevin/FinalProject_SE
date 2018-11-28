@@ -48,8 +48,6 @@ public class HomeController extends HttpServlet {
 		User user = new User(firstName, lastName, email, loginPassword);
 		
 		dao.insertUser(user);
-			
-		response.getWriter().append("<h1>It worked!</h1>");
 		
 		doGet(request, response);
 	}
