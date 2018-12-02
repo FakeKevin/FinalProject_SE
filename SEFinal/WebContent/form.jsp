@@ -4,16 +4,26 @@
 <html>
 <head>
 <meta http-equiv="Content-Type" content="text/html; charset=EUC-KR">
-<link rel="stylesheet" href="../style/style.css">
-<title>Form</title>
+<link rel="stylesheet" href="style/style.css">
+<title>Login</title>
 </head>
 <body>
-
-	<form action="HomeController" method="post">
-		Name: <input name="name" type="text" /><br /> 
-		Password: <input name="password" type="text" /><br />
-		<input type="submit" value="Go!" />
+	<div class="sideBar">
+		<a href="welcome.html">Home</a>
+	</div>
+<div class="main">
+		<div class="container">
+			<div class="headerText">
+					<form action="HomeController" method="post">
+					Name: <input name="name" type="text" /><br /> 
+					Password: <input name="password" type="text" /><br />
+					<input type="submit" value="Go!" />
 	</form>
-
+			</div>
+			<div class="images">
+				<img src="Images/crypto_lock.png" alt="Protection!!" width="350" length="500">
+			</div>
+		</div>
+	</div>
 </body>
 </html>
