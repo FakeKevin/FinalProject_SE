@@ -46,11 +46,11 @@ public class User implements Serializable {
 	
 public boolean login(List<User> user) {
 	if(user.size() == 1) {
-		user.removeAll(user);
+		user.clear();
 		return true; 
 	}
 	else {
-		user.remove(user);
+		user.clear();
 		return false;
 	}
 }
