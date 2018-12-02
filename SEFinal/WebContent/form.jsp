@@ -15,8 +15,8 @@
 		<div class="container">
 			<div class="headerText">
 					<form action="HomeController" method="post">
-					Name: <input name="name" type="text" /><br /> 
-					Password: <input name="password" type="text" /><br />
+					Email: <input name="name" type="email" /><br /> 
+					Password: <input name="password" type="password" /><br />
 					<input type="submit" value="Go!" />
 	</form>
 			</div>

@@ -44,6 +44,19 @@ public class User implements Serializable {
 	@OneToMany
 	private List<Account> accountList = new ArrayList<Account>();
 	
+public boolean login(List<User> user) {
+	if(user.size() == 1) {
+		user.removeAll(user);
+		return true; 
+	}
+	else {
+		user.remove(user);
+		return false;
+	}
+}
+
+
+
 }
 
 
