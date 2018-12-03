@@ -9,6 +9,7 @@ import javax.servlet.http.HttpServletRequest;
 import javax.servlet.http.HttpServletResponse;
 
 import ca.sheridancollege.beans.Account;
+import ca.sheridancollege.beans.Encrypt;
 import ca.sheridancollege.dao.DAO;
 
 /**
@@ -27,6 +28,7 @@ public class AccountController extends HttpServlet {
     }
 	private DAO dao = new DAO();
 	private Account a = new Account();
+	private Encrypt e = new Encrypt();
 	/**
 	 * @see HttpServlet#doGet(HttpServletRequest request, HttpServletResponse response)
 	 */
@@ -41,8 +43,7 @@ public class AccountController extends HttpServlet {
 		
 		String location = request.getParameter("location");
 		String username = request.getParameter("username");
-		String Accountpassword = request.getParameter("password");
-		
+		String Accountpassword = request.getParameter("password");		
 		
 		
 		doGet(request, response);
