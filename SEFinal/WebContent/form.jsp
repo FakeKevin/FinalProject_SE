@@ -11,18 +11,27 @@
 	<div class="sideBar">
 		<a href="welcome.html">Home</a>
 	</div>
-<div class="main">
+	<div class="main">
 		<div class="container">
 			<div class="headerText">
-					<form action="HomeController" method="post">
-					Email: <input name="email" type="email" /><br /> 
-					Password: <input name="password" type="password" /><br />
-					<input type="submit" value="Go!" />
-	</form>
-			
+				<form action="HomeController" method="post">
+				<table style="width:50%">
+					<tr>
+						<th>Email:</th>
+						<th><input name="email" type="email" /></th>
+					</tr>
+					<tr>
+						<th>Password:</th>
+						<th><input name="password" type="password" /></th>
+						<th><input type="submit" value="Go!" /></th>
+					</tr>
+					</table>
+				</form>
+
 			</div>
 			<div class="images">
-				<img src="Images/crypto_lock.png" alt="Protection!!" width="350" length="500">
+				<img src="Images/crypto_lock.png" alt="Protection!!" width="350"
+					length="500">
 			</div>
 		</div>
 	</div>
