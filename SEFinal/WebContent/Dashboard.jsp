@@ -17,7 +17,7 @@
 				<form action="AccountController" method="post">
 					<div class="row">
 						<div class="column"><button id="dashSubmit">Save Password</button></div>
-						<div class="column"><button id="submit">Retrieve/Show Passwords</button></div>
+						<div class="column"><button id="submit">Retrieve Passwords</button></div>
 						<div class="column"><button id="submit">Delete Password</button></div>
 						<div class="column"><button id="submit">Show Password</button></div>
 					</div> 
