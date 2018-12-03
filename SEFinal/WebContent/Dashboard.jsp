@@ -17,9 +17,9 @@
 				<form action="HomeController" method="post">
 					<div class="row">
 						<div class="column"><button id="dashSubmit">Save Password</button></div>
-						<div class="column"><button id="submit">Retrieve/Show Password</button></div>
-						<div class="column"><button id="submit">Delete Password</button></div>
-						<div class="column"><button id="submit">Show Password</button></div>
+						<div class="column"><button id="dashSubmit">Retrieve/Show Password</button></div>
+						<div class="column"><button id="dashSubmit">Delete Password</button></div>
+						<div class="column"><button id="dashSubmit">Show Password</button></div>
 					</div> 
 				</form>
 
