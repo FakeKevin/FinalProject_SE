@@ -47,7 +47,7 @@ public class HomeController extends HttpServlet {
 		
 		User user = new User(firstName, lastName, email, loginPassword);
 		
-		dao.insertUser(user);
+		dao.insertorUpdateUser(user);
 		
 		doGet(request, response);
 	}
