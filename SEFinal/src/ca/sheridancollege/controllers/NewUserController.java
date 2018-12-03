@@ -8,23 +8,23 @@ import javax.servlet.annotation.WebServlet;
 import javax.servlet.http.HttpServlet;
 import javax.servlet.http.HttpServletRequest;
 import javax.servlet.http.HttpServletResponse;
-import javax.persistence.Query;
 
-import ca.sheridancollege.beans.Account;
 import ca.sheridancollege.beans.User;
 import ca.sheridancollege.dao.DAO;
 
 /**
- * Servlet implementation class HomeController
+ * Servlet implementation class NewUserController
  */
-@WebServlet("/HomeController")
-public class HomeController extends HttpServlet {
-	private static final long serialVersionUID = 102831973239L;
+@WebServlet("/NewUserController")
+public class NewUserController extends HttpServlet {
+	private static final long serialVersionUID = 1L;
+       
     /**
      * @see HttpServlet#HttpServlet()
      */
-    public HomeController() {
+    public NewUserController() {
         super();
+        // TODO Auto-generated constructor stub
     }
 	private DAO dao = new DAO();
 	private User u = new User();
@@ -32,31 +32,31 @@ public class HomeController extends HttpServlet {
 	 * @see HttpServlet#doGet(HttpServletRequest request, HttpServletResponse response)
 	 */
 	protected void doGet(HttpServletRequest request, HttpServletResponse response) throws ServletException, IOException {
-
-
+		
+		
 	}
 
 	/**
 	 * @see HttpServlet#doPost(HttpServletRequest request, HttpServletResponse response)
 	 */
 	protected void doPost(HttpServletRequest request, HttpServletResponse response) throws ServletException, IOException {
-			
+		String firstname = request.getParameter("firstname");
+		String lastname = request.getParameter("lastname");
 		String email = request.getParameter("email");
 		String loginPassword = request.getParameter("password");
 		
-		User user = new User(email, loginPassword);
-		
-		List<User> verifyLogin = dao.queryUser(email, loginPassword);
-		boolean spriteCranberry = u.login(verifyLogin);
-		if(spriteCranberry == true) {
+		User user = new User(firstname,lastname,email,loginPassword);
+		List<User> verifyLogin = dao.verifyUser(email);
+		boolean verified = u.login(verifyLogin);
+		if(verified == false) {
+			dao.insertorUpdateUser(user);
 			response.sendRedirect("Index.html");
 			
 		}
 		else {
-			response.sendRedirect("form.jsp");
-			
+			response.sendRedirect("UserCreate.html");
+			//Create error message about account already existing 	
 		}
-		
 		doGet(request, response);
 	}
 

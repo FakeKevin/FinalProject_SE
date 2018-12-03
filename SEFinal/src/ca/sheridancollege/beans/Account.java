@@ -28,12 +28,15 @@ public class Account implements Serializable{
 	@GeneratedValue
 	@Column(name = "id")
 	private int id;
+	@Column(name = "location")
+	private String location;
 	@Column(name = "username")
 	private String username;
 	@Column(name = "password")
 	private String password;	
 
-	public Account(String name, String pass) {
+	public Account(String name, String pass, String location) {
+		this.location = location;
 		this.username = name;
 		this.password = pass;
 	}
