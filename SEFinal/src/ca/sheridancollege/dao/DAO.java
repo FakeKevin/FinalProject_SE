@@ -84,7 +84,15 @@ public class DAO {
 		session.close();
 		return accountList;
 	}
-	
+	public void updateAccount(Account a) {
+		Session session = sessionFactory.openSession();
+		session.beginTransaction();
+		
+		session.save(a);
+		
+		session.getTransaction().commit();
+		session.close();		
+	}
 	
 }
 
