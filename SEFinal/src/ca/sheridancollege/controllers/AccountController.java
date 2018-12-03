@@ -45,6 +45,10 @@ public class AccountController extends HttpServlet {
 		String username = request.getParameter("username");
 		String Accountpassword = request.getParameter("password");		
 		
+		e.setRawPassword(Accountpassword);
+		e.process();
+		
+		String encPassword = e.getEncPassword();
 		
 		doGet(request, response);
 	}

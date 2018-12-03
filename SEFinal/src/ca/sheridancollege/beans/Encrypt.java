@@ -9,28 +9,15 @@ import java.security.NoSuchAlgorithmException;
 import java.security.SecureRandom;
 import java.util.Random;
 
-import lombok.AllArgsConstructor;
-import lombok.Data;
-import lombok.Getter;
 import lombok.NoArgsConstructor;
-import lombok.Setter;
-@Data
-@Getter
-@Setter
+
 @NoArgsConstructor
-@AllArgsConstructor
 public class Encrypt {
 
 	private static final Random RAND = new SecureRandom();
 	private String rawPassword;
 	private String encPassword;
 	private byte[] byteHash;
-	
-
-	
-	public Encrypt(String rawPassword) {
-		this.rawPassword = rawPassword;
-	}
 	
 	public void process() throws NoSuchAlgorithmException{
 		byte[] textBytes = rawPassword.getBytes(StandardCharsets.UTF_16); //Convert input password to bytes
@@ -58,6 +45,7 @@ public class Encrypt {
         encPassword = String.format("%064x", new BigInteger(1, byteHash)); //Convert the byte array to a string represented by ASCII hex
 	}
 	
+	//Getters and setters
     public String getEncPassword() {
 		return encPassword;
 	}
@@ -65,7 +53,12 @@ public class Encrypt {
 	public byte[] getByteHash() {
 		return byteHash;
 	}
+	
+	public String setRawPassword(String rawPassword) {
+		this.rawPassword = rawPassword;
+	}
 
+	//Generate salt
 	private static byte[] getSalt() {
         byte[] salt = new byte[16];
         RAND.nextBytes(salt);
