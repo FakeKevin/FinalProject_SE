@@ -17,7 +17,7 @@ public class DAO {
 			.configure("ca/sheridancollege/config/hibernate.cfg.xml")
 			.buildSessionFactory();
 	//For creating users in the database
-	public void insertUser(User user) {
+	public void insertorUpdateUser(User user) {
 		Session session = sessionFactory.openSession();
 		session.beginTransaction();
 
@@ -38,7 +38,7 @@ public class DAO {
 		session.close();
 	}
 	//this method creates an account for the user
-	public void insertAccount(Account account) {
+	public void insertorUpdateAccount(Account account) {
 		Session session = sessionFactory.openSession();
 		session.beginTransaction();
 
@@ -84,15 +84,5 @@ public class DAO {
 		session.close();
 		return accountList;
 	}
-	public void updateAccount(Account a) {
-		Session session = sessionFactory.openSession();
-		session.beginTransaction();
-		
-		session.save(a);
-		
-		session.getTransaction().commit();
-		session.close();		
-	}
-	
 }
 
