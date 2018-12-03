@@ -4,11 +4,13 @@ import java.io.Serializable;
 import java.util.ArrayList;
 import java.util.List;
 
+import javax.persistence.Column;
 import javax.persistence.Entity;
 import javax.persistence.GeneratedValue;
 import javax.persistence.Id;
 import javax.persistence.NamedQuery;
 import javax.persistence.OneToMany;
+import javax.persistence.Table;
 
 import lombok.AllArgsConstructor;
 import lombok.Data;
@@ -22,16 +24,22 @@ import lombok.Setter;
 @Entity
 @Getter
 @Setter
+@Table(name = "User")
 //This named query is used for the queryAccount method in the DAO
-@NamedQuery(name = "User.login", query = "from user where email = :email and password = :password")
+@NamedQuery(name = "User.login", query = "select * from user where email = :email and password = :password")
 public class User implements Serializable {
 	
 	@Id
 	@GeneratedValue
+	@Column(name = "id")
 	private int id;
+	@Column(name = "firstname")
 	private String firstName;
+	@Column(name = "lastname")
 	private String lastName;
+	@Column(name = "email")
 	private String email;
+	@Column(name = "password")
 	private String loginPassword; 
 	
 	public User(String fname, String lname, String email, String password){

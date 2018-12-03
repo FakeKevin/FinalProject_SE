@@ -10,13 +10,14 @@
 		<property name="connection.password">sheridan</property>
 
 		<!-- Set the database dialect -->
-		<property name="dialect">org.hibernate.dialect.MySQLInnoDBDialect</property>
+		<property name="dialect">org.hibernate.dialect.MySQL5Dialect</property>
 
 		<!-- Echo all executed SQL to stdout -->
 		<property name="show_sql">true</property>
 
 		<!-- Drop and re-create the database schema on startup -->
 		<property name="hbm2ddl.auto">create</property>
+
 
 		<!-- dbcp connection pool configuration -->
 		<property name="dbcp.initialSize">5</property>
