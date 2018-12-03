@@ -54,9 +54,6 @@ public boolean login(List<User> user) {
 		return false;
 	}
 }
-
-
-
 }
 
 
