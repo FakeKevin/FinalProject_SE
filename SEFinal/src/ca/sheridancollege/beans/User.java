@@ -24,9 +24,9 @@ import lombok.Setter;
 @Entity
 @Getter
 @Setter
-@Table(name = "User")
+@Table(name = "user")
 //This named query is used for the queryAccount method in the DAO
-@NamedQuery(name = "User.login", query = "select * from user where email = :email and password = :password")
+@NamedQuery(name = "User.login", query = "from User where email = :email and password = :password")
 public class User implements Serializable {
 	
 	@Id

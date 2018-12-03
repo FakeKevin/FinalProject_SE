@@ -22,7 +22,7 @@ import lombok.Setter;
 @Getter
 @Setter
 @Table(name = "account")
-@NamedQuery(name = "Account.login", query = "select * from account where id =:id")
+@NamedQuery(name = "Account.login", query = "from Account where id =:id")
 public class Account implements Serializable{
 	@Id
 	@GeneratedValue
