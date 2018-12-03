@@ -74,6 +74,17 @@ public class DAO {
 		session.close();
 		return userList;
 	}
-
+	public List<Account> displayAccount(){
+		Session session = sessionFactory.openSession();
+		session.beginTransaction();
+		
+		Query query = session.getNamedQuery("Account.display");
+		List<Account> accountList = query.getResultList();
+		session.getTransaction().commit();
+		session.close();
+		return accountList;
+	}
+	
+	
 }
 
