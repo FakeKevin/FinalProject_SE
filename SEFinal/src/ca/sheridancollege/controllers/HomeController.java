@@ -42,6 +42,7 @@ public class HomeController extends HttpServlet {
 		boolean spriteCranberry = u.login(verifyLogin);
 		if(spriteCranberry == true) {
 			response.sendRedirect("Index.html");
+			
 		}
 		else {
 			response.sendRedirect("form.jsp");
