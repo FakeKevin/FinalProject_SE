@@ -54,7 +54,7 @@ public class Encrypt {
 		return byteHash;
 	}
 	
-	public String setRawPassword(String rawPassword) {
+	public void setRawPassword(String rawPassword) {
 		this.rawPassword = rawPassword;
 	}
 

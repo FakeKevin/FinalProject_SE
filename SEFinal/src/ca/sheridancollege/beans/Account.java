@@ -25,7 +25,6 @@ import lombok.Setter;
 @NamedQuery(name = "Account.login", query = "from Account where id =:id")
 public class Account implements Serializable{
 	@Id
-	@GeneratedValue
 	@Column(name = "id")
 	private int id;
 	@Column(name = "location")
@@ -40,4 +39,9 @@ public class Account implements Serializable{
 		this.username = name;
 		this.password = pass;
 	}
+	
+	public void setId(int id) {
+		this.id = id;
+	}
+	
 }

@@ -14,10 +14,10 @@
 	<div class="main">
 		<div class="container">
 			<div class="headerText">
-				<form action="HomeController" method="post">
+				<form action="AccountController" method="post">
 					<div class="row">
 						<div class="column"><button id="dashSubmit">Save Password</button></div>
-						<div class="column"><button id="submit">Retrieve/Show Password</button></div>
+						<div class="column"><button id="submit">Retrieve/Show Passwords</button></div>
 						<div class="column"><button id="submit">Delete Password</button></div>
 						<div class="column"><button id="submit">Show Password</button></div>
 					</div> 

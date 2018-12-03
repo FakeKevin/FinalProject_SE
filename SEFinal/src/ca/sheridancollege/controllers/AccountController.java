@@ -1,6 +1,7 @@
 package ca.sheridancollege.controllers;
 
 import java.io.IOException;
+import java.security.NoSuchAlgorithmException;
 
 import javax.servlet.ServletException;
 import javax.servlet.annotation.WebServlet;
@@ -46,9 +47,16 @@ public class AccountController extends HttpServlet {
 		String Accountpassword = request.getParameter("password");		
 		
 		e.setRawPassword(Accountpassword);
-		e.process();
-		
+		try {
+			e.process();
+		} catch (NoSuchAlgorithmException e1) {
+			
+			e1.printStackTrace();
+		}
 		String encPassword = e.getEncPassword();
+		
+		
+		
 		
 		doGet(request, response);
 	}

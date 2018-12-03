@@ -66,7 +66,6 @@ public class User implements Serializable {
 
 	public boolean login(List<User> user) {
 		if (!user.isEmpty()) {
-			user.clear();
 			return true;
 		} else {
 			user.clear();
