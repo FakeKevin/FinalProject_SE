@@ -40,11 +40,11 @@ public class HomeController extends HttpServlet {
 		
 		List<User> verifyLogin = dao.queryUser(email, loginPassword);
 		boolean spriteCranberry = u.login(verifyLogin);
-		if(spriteCranberry = true) {
+		if(spriteCranberry == true) {
 			response.sendRedirect("Index.html");
 		}
 		else {
-			request.getRequestDispatcher("form.jsp").forward(request, response);
+			response.sendRedirect("form.jsp");
 			
 		}
 

@@ -57,7 +57,7 @@ public class User implements Serializable {
 	private List<Account> accountList = new ArrayList<Account>();
 	
 public boolean login(List<User> user) {
-	if(user.size() == 1) {
+	if(!user.isEmpty()){
 		user.clear();
 		return true; 
 	}
