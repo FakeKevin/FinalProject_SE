@@ -15,10 +15,11 @@
 		<div class="container">
 			<div class="headerText">
 					<form action="HomeController" method="post">
-					Email: <input name="name" type="email" /><br /> 
+					Email: <input name="email" type="email" /><br /> 
 					Password: <input name="password" type="password" /><br />
 					<input type="submit" value="Go!" />
 	</form>
+			
 			</div>
 			<div class="images">
 				<img src="Images/crypto_lock.png" alt="Protection!!" width="350" length="500">

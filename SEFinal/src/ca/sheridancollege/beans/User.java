@@ -40,6 +40,10 @@ public class User implements Serializable {
 		this.email = email;
 		this.loginPassword = password;
 	}
+	public User(String email, String password) {
+		this.email = email;
+		this.loginPassword = password;
+	}
 	//Users can have multiple accounts
 	@OneToMany
 	private List<Account> accountList = new ArrayList<Account>();

@@ -66,7 +66,7 @@ public class DAO {
 
 		Query query = session.getNamedQuery("User.login");
 		
-		query.setParameter("username", email);
+		query.setParameter("email", email);
 		query.setParameter("password", password);
 		
 		List<User> userList = query.getResultList();
