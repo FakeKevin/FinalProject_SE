@@ -57,16 +57,16 @@ public class AccountController extends HttpServlet {
 		
 		switch(selectedOption) {
 		case "Save":
-			/*e.setRawPassword(accountPassword);
+			e.setRawPassword(accountPassword);
 			try {
 				e.process();
 			} catch (NoSuchAlgorithmException e1) {	
 				e1.printStackTrace();
 			}
 			String encPassword = e.getEncPassword();
-			*/
 			
-			Account newAccount = new Account(accountPassword, username, location, accountID);
+			
+			Account newAccount = new Account(encPassword, username, location, accountID);
 			
 			dao.insertorUpdateAccount(newAccount);
 			break;

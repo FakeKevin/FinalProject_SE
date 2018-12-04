@@ -43,7 +43,7 @@ public class Encrypt {
         byteHash = m.digest(); //Complete the hash with final operations and assign to an array
         
         String longPass = String.format("%064x", new BigInteger(1, byteHash)); //Convert the byte array to a string represented by ASCII hex
-        encPassword = longPass.substring(0, 36)//Truncate password for compatibility
+        encPassword = longPass.substring(0, 36);//Truncate password for compatibility
 	}
 	
 	//Getters and setters
