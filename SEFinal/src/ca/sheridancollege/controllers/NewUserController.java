@@ -50,7 +50,7 @@ public class NewUserController extends HttpServlet {
 		boolean verified = u.login(verifyLogin);
 		if(verified == false) {
 			dao.insertorUpdateUser(user);
-			response.sendRedirect("Index.html");
+			response.sendRedirect("Dashboard.jsp");
 			
 		}
 		else {

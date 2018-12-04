@@ -8,6 +8,7 @@ import javax.servlet.annotation.WebServlet;
 import javax.servlet.http.HttpServlet;
 import javax.servlet.http.HttpServletRequest;
 import javax.servlet.http.HttpServletResponse;
+import javax.servlet.http.HttpSession;
 import javax.persistence.Query;
 
 import ca.sheridancollege.beans.Account;
@@ -43,13 +44,15 @@ public class HomeController extends HttpServlet {
 			
 		String email = request.getParameter("email");
 		String loginPassword = request.getParameter("password");
+		HttpSession session = request.getSession();
 		
 		User user = new User(email, loginPassword);
 		
 		List<User> verifyLogin = dao.queryUser(email, loginPassword);
 		boolean spriteCranberry = u.login(verifyLogin);
 		if(spriteCranberry == true) {
-			response.sendRedirect("Index.html");
+			session.setAttribute("userID", verifyLogin.get(0).getId()); //This is a session for the current login
+			response.sendRedirect("Dashboard.jsp");
 			
 		}
 		else {

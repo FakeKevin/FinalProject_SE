@@ -1,5 +1,6 @@
 <%@ page language="java" contentType="text/html; charset=EUC-KR"
 	pageEncoding="EUC-KR"%>
+<%@ taglib prefix="c" uri="http://java.sun.com/jsp/jstl/core"%>
 <!DOCTYPE html PUBLIC "-//W3C//DTD HTML 4.01 Transitional//EN" "http://www.w3.org/TR/html4/loose.dtd">
 <html>
 <head>
@@ -14,16 +15,48 @@
 	<div class="main">
 		<div class="container">
 			<div class="headerText">
-				<form action="AccountController" method="post">
-					<div class="row">
-						<div class="column"><button id="dashSubmit">Save Password</button></div>
-						<div class="column"><button id="submit">Retrieve Passwords</button></div>
-						<div class="column"><button id="submit">Delete Password</button></div>
-						<div class="column"><button id="submit">Show Password</button></div>
-					</div> 
-				</form>
-
+				<table style="width: 50%">
+					<form action="AccountController" method="post">
+						<div class="row">
+							<div class="column">
+								<tr>
+									<th>Location:</th>
+									<th><input name="location" type="text" /></th>
+								</tr>
+								<tr>
+									<th>Username:</th>
+									<th><input name="username" type="text" /></th>
+								</tr>
+								<tr>
+									<th>Password:</th>
+									<th><input name="password" type="password" /></th>
+									<th><input name="menu" type="submit" value="Save" /></th>
+								</tr>
+							</div>
+						</div>
+					</form>
+				</table>
 			</div>
+			<form action="AccountController" method="post">
+				<table border="1">
+					<tr>
+						<th>Location</th>
+						<th>Username</th>
+						<th>Password</th>
+						<th><input name="menu" type="submit" value="Delete" /></th>
+					</tr>
+					<c:forEach var="item" items="${retrieved}">
+						<tr>
+							<td>${item.location}</td>
+							<td>${item.username}</td>
+							<td>${item.password}</td>
+							<td><input name="sequence" type="radio"
+								value=${item.sequence }/></td>
+
+						</tr>
+					</c:forEach>
+				</table>
+			</form>
 			<div class="images">
 				<img src="Images/crypto_lock.png" alt="Protection!!" width="350"
 					length="500">

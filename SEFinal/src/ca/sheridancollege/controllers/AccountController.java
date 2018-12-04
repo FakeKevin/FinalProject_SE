@@ -2,12 +2,14 @@ package ca.sheridancollege.controllers;
 
 import java.io.IOException;
 import java.security.NoSuchAlgorithmException;
+import java.util.List;
 
 import javax.servlet.ServletException;
 import javax.servlet.annotation.WebServlet;
 import javax.servlet.http.HttpServlet;
 import javax.servlet.http.HttpServletRequest;
 import javax.servlet.http.HttpServletResponse;
+import javax.servlet.http.HttpSession;
 
 import ca.sheridancollege.beans.Account;
 import ca.sheridancollege.beans.Encrypt;
@@ -42,18 +44,45 @@ public class AccountController extends HttpServlet {
 	 */
 	protected void doPost(HttpServletRequest request, HttpServletResponse response) throws ServletException, IOException {
 		
+		String selectedOption = request.getParameter("menu");
+		
+		HttpSession session = request.getSession();
+		int accountID = (int) session.getAttribute("userID"); //Get the ID for the current logged in user
+		
 		String location = request.getParameter("location");
 		String username = request.getParameter("username");
-		String Accountpassword = request.getParameter("password");		
+		String accountPassword = request.getParameter("password");
 		
-		e.setRawPassword(Accountpassword);
-		try {
-			e.process();
-		} catch (NoSuchAlgorithmException e1) {
+		switch(selectedOption) {
+		case "Save":
+			e.setRawPassword(accountPassword);
+			try {
+				e.process();
+			} catch (NoSuchAlgorithmException e1) {	
+				e1.printStackTrace();
+			}
+			String encPassword = e.getEncPassword();
 			
-			e1.printStackTrace();
-		}
-		String encPassword = e.getEncPassword();
+			Account newAccount = new Account(accountID, location, username, encPassword);
+			
+			dao.insertorUpdateAccount(newAccount);
+			break;
+		case "Delete":
+			int deleteID = Integer.valueOf(request.getParameter("sequence"));
+			dao.deleteAccountByID(deleteID);
+			break;
+		case "Retrieve":
+			List<Account> retrieved = dao.displayAccount();
+			request.setAttribute("retrieved", retrieved);
+			response.sendRedirect("Dashboard.jsp");
+			break;
+		default:
+			response.sendRedirect("Dashboard.jsp");
+			break;	
+		}	
+		
+		
+		//FOR SAVING
 		
 		
 		

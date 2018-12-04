@@ -32,16 +32,16 @@ public class Account implements Serializable{
 	@Column(name = "username")
 	private String username;
 	@Column(name = "password")
-	private String password;	
-
-	public Account(String name, String pass, String location) {
-		this.location = location;
-		this.username = name;
-		this.password = pass;
-	}
+	private String password;
+	@GeneratedValue
+	@Column(name = "sequence")
+	private int sequence;
 	
-	public void setId(int id) {
-		this.id = id;
+	public Account(int accountID, String location, String name, String pass) {
+		id = accountID;
+		this.location = location;
+		username = name;
+		password = pass;
 	}
 	
 }

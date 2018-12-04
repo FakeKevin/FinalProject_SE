@@ -52,11 +52,11 @@ public class DAO {
 	}
 
 	// This method deletes the account of a user by the Id
-	public void deleteAccountByPass(String password) {
+	public void deleteAccountByID(int accountID) {
 		Session session = sessionFactory.openSession();
 		session.beginTransaction();
 
-		Account toDelete = session.get(Account.class, password);
+		Account toDelete = session.get(Account.class, accountID);
 		session.delete(toDelete);
 
 		session.getTransaction().commit();
