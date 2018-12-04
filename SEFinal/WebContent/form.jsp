@@ -25,6 +25,9 @@
 						<th><input name="password" type="password" /></th>
 						<th><input type="submit" value="Go!" /></th>
 					</tr>
+					<tr>
+						<th>${failedLog}</th>
+					</tr>
 					</table>
 				</form>
 

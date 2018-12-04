@@ -53,9 +53,10 @@ public class HomeController extends HttpServlet {
 		if(spriteCranberry == true) {
 			session.setAttribute("userID", verifyLogin.get(0).getId()); //This is a session for the current login
 			response.sendRedirect("Dashboard.jsp");
-			
+			session.setAttribute("failedLog", "");
 		}
 		else {
+			session.setAttribute("failedLog", "Login failed. Please try again.");
 			response.sendRedirect("form.jsp");
 			
 		}

@@ -10,7 +10,7 @@
 </head>
 <body>
 	<div class="sideBar">
-		<a href="welcome.html">Home</a>
+		<a href="SessionDestroy">Log out</a>
 	</div>
 	<div class="main">
 		<div class="container">
