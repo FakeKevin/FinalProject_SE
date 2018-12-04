@@ -96,11 +96,14 @@ public class DAO {
 		return userList;
 	}
 
-	public List<Account> displayAccount() {
+	public List<Account> displayAccount(int accountid) {
 		Session session = sessionFactory.openSession();
 		session.beginTransaction();
 
 		Query query = session.getNamedQuery("Account.display");
+		
+		query.setParameter("accountid", accountid);
+		
 		List<Account> accountList = query.getResultList();
 		session.getTransaction().commit();
 		session.close();

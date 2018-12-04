@@ -22,9 +22,10 @@ import lombok.Setter;
 @Getter
 @Setter
 @Table(name = "account")
-@NamedQuery(name = "Account.login", query = "from Account where id =:id")
+@NamedQuery(name = "Account.display", query = "from Account where accountid =:accountid")
 public class Account implements Serializable{
 	@Id
+	@GeneratedValue
 	@Column(name = "id")
 	private int id;
 	@Column(name = "location")
@@ -33,12 +34,11 @@ public class Account implements Serializable{
 	private String username;
 	@Column(name = "password")
 	private String password;
-	@GeneratedValue
-	@Column(name = "sequence")
-	private int sequence;
+	@Column(name = "accountid")
+	private int accountid;
 	
 	public Account(int accountID, String location, String name, String pass) {
-		id = accountID;
+		accountid = accountID;
 		this.location = location;
 		username = name;
 		password = pass;

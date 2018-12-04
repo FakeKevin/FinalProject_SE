@@ -68,13 +68,13 @@ public class AccountController extends HttpServlet {
 			dao.insertorUpdateAccount(newAccount);
 			break;
 		case "Delete":
-			int deleteID = Integer.valueOf(request.getParameter("sequence"));
+			int deleteID = Integer.valueOf(request.getParameter("id"));
 			dao.deleteAccountByID(deleteID);
 			break;
 		case "Retrieve":
-			List<Account> retrieved = dao.displayAccount();
+			List<Account> retrieved = dao.displayAccount(accountID);
 			request.setAttribute("retrieved", retrieved);
-			response.sendRedirect("Dashboard.jsp");
+			request.getRequestDispatcher("Dashboard.jsp").forward(request, response);
 			break;
 		default:
 			response.sendRedirect("Dashboard.jsp");

@@ -37,7 +37,8 @@
 					</form>
 				</table>
 			</div>
-			<form action="AccountController" method="post">
+			<form action = "AccountController" method="post">
+			<input name="menu" type="submit" value="Retrieve" />
 				<table border="1">
 					<tr>
 						<th>Location</th>
@@ -50,9 +51,8 @@
 							<td>${item.location}</td>
 							<td>${item.username}</td>
 							<td>${item.password}</td>
-							<td><input name="sequence" type="radio"
-								value=${item.sequence }/></td>
-
+							<td><input name="id" type="radio"
+								value=${item.id} /></td>
 						</tr>
 					</c:forEach>
 				</table>
