@@ -37,7 +37,7 @@ public class Account implements Serializable{
 	@Column(name = "accountid")
 	private int accountid;
 	
-	public Account(int accountID, String location, String name, String pass) {
+	public Account( String pass, String name, String location, int accountID) {
 		accountid = accountID;
 		this.location = location;
 		username = name;

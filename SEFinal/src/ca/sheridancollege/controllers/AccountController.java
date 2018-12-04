@@ -2,7 +2,9 @@ package ca.sheridancollege.controllers;
 
 import java.io.IOException;
 import java.security.NoSuchAlgorithmException;
+import java.security.SecureRandom;
 import java.util.List;
+import java.util.Random;
 
 import javax.servlet.ServletException;
 import javax.servlet.annotation.WebServlet;
@@ -55,15 +57,16 @@ public class AccountController extends HttpServlet {
 		
 		switch(selectedOption) {
 		case "Save":
-			e.setRawPassword(accountPassword);
+			/*e.setRawPassword(accountPassword);
 			try {
 				e.process();
 			} catch (NoSuchAlgorithmException e1) {	
 				e1.printStackTrace();
 			}
 			String encPassword = e.getEncPassword();
+			*/
 			
-			Account newAccount = new Account(accountID, location, username, encPassword);
+			Account newAccount = new Account(accountPassword, username, location, accountID);
 			
 			dao.insertorUpdateAccount(newAccount);
 			break;
@@ -72,20 +75,14 @@ public class AccountController extends HttpServlet {
 			dao.deleteAccountByID(deleteID);
 			break;
 		case "Retrieve":
-			List<Account> retrieved = dao.displayAccount(accountID);
-			request.setAttribute("retrieved", retrieved);
-			request.getRequestDispatcher("Dashboard.jsp").forward(request, response);
 			break;
 		default:
 			response.sendRedirect("Dashboard.jsp");
 			break;	
 		}	
-		
-		
-		//FOR SAVING
-		
-		
-		
+		List<Account> retrieved = dao.displayAccount(accountID);
+		request.setAttribute("retrieved", retrieved);
+		request.getRequestDispatcher("Dashboard.jsp").forward(request, response);
 		
 		doGet(request, response);
 	}

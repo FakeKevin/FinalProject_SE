@@ -44,7 +44,7 @@ public class DAO {
 		Session session = sessionFactory.openSession();
 		session.beginTransaction();
 
-		session.save(account);
+		session.saveOrUpdate(account);
 
 		session.getTransaction().commit();
 		session.close();
