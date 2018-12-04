@@ -8,6 +8,7 @@ import javax.servlet.annotation.WebServlet;
 import javax.servlet.http.HttpServlet;
 import javax.servlet.http.HttpServletRequest;
 import javax.servlet.http.HttpServletResponse;
+import javax.servlet.http.HttpSession;
 
 import ca.sheridancollege.beans.User;
 import ca.sheridancollege.dao.DAO;
@@ -40,6 +41,8 @@ public class NewUserController extends HttpServlet {
 	 * @see HttpServlet#doPost(HttpServletRequest request, HttpServletResponse response)
 	 */
 	protected void doPost(HttpServletRequest request, HttpServletResponse response) throws ServletException, IOException {
+		HttpSession session = request.getSession();
+		
 		String firstname = request.getParameter("firstname");
 		String lastname = request.getParameter("lastname");
 		String email = request.getParameter("email");
@@ -50,6 +53,7 @@ public class NewUserController extends HttpServlet {
 		boolean verified = u.login(verifyLogin);
 		if(verified == false) {
 			dao.insertorUpdateUser(user);
+			session.setAttribute("userID", user.getId());
 			response.sendRedirect("Dashboard.jsp");
 			
 		}

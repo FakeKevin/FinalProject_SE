@@ -10,7 +10,9 @@
 </head>
 <body>
 	<div class="sideBar">
-		<a href="SessionDestroy">Log out</a>
+	<form action="SessionDestroy" method="post">
+		<button style="height:50px;width:100px">Log out</button>
+		</form>
 	</div>
 	<div class="main">
 		<div class="container">
