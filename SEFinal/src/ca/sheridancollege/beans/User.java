@@ -18,7 +18,7 @@ import lombok.Data;
 import lombok.Getter;
 import lombok.NoArgsConstructor;
 import lombok.Setter;
-
+//Lombok and Hibernate import annotations
 @AllArgsConstructor
 @NoArgsConstructor
 @Data
@@ -28,13 +28,13 @@ import lombok.Setter;
 
 @Table(name = "user")
 
-//This named query is used for the queryAccount method in the DAO
+//These named queries are used for the select queries in the DAO
 @NamedQueries({ @NamedQuery(name = "User.login", query = "from User where email = :email and password = :password"), 
 				@NamedQuery(name = "User.exists",query = "from User where email = :email")
 })
 
 public class User implements Serializable {
-
+	//Database Rows and Variable Declaration
 	@Id
 	@GeneratedValue
 	@Column(name = "id")
@@ -47,14 +47,14 @@ public class User implements Serializable {
 	private String email;
 	@Column(name = "password")
 	private String loginPassword;
-
+	//Constructor for User without ID because id is a generated value
 	public User(String fname, String lname, String email, String password) {
 		this.firstName = fname;
 		this.lastName = lname;
 		this.email = email;
 		this.loginPassword = password;
 	}
-
+	//Constructor used when verifying login
 	public User(String email, String password) {
 		this.email = email;
 		this.loginPassword = password;
@@ -63,7 +63,7 @@ public class User implements Serializable {
 	// Users can have multiple accounts
 	@OneToMany
 	private List<Account> accountList = new ArrayList<Account>();
-
+	//Checks if a user database entry has been retrieved to verify login
 	public boolean login(List<User> user) {
 		if (!user.isEmpty()) {
 			return true;

@@ -41,25 +41,32 @@ public class NewUserController extends HttpServlet {
 	 * @see HttpServlet#doPost(HttpServletRequest request, HttpServletResponse response)
 	 */
 	protected void doPost(HttpServletRequest request, HttpServletResponse response) throws ServletException, IOException {
+		//Creates a new session
 		HttpSession session = request.getSession();
-		
+		//Retrieve parameters from html and jsp pages
 		String firstname = request.getParameter("firstname");
 		String lastname = request.getParameter("lastname");
 		String email = request.getParameter("email");
 		String loginPassword = request.getParameter("password");
-		
+		//Create new User object with parameter retrieved 
 		User user = new User(firstname,lastname,email,loginPassword);
+		/*Create an arraylist with the row retrieved from the verify user method in the DAO
+		and verify email when creating users. If the verify login method returns false, then no account is registered and the
+		create user method can be executed.*/
 		List<User> verifyLogin = dao.verifyUser(email);
 		boolean verified = u.login(verifyLogin);
 		if(verified == false) {
+			//create user in database
 			dao.insertorUpdateUser(user);
+			//pass userid attribute to jsp
 			session.setAttribute("userID", user.getId());
 			response.sendRedirect("Dashboard.jsp");
 			
 		}
 		else {
+			//User is sent back to the create user page upon an already existing user. 
 			response.sendRedirect("UserCreate.html");
-			//Create error message about account already existing 	
+				
 		}
 		doGet(request, response);
 	}

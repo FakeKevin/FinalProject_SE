@@ -22,8 +22,10 @@ import lombok.Setter;
 @Getter
 @Setter
 @Table(name = "account")
+//These named queries are used for the select queries in the DAO
 @NamedQuery(name = "Account.display", query = "from Account where accountid =:accountid")
 public class Account implements Serializable{
+	//Database Rows and Variable Declaration
 	@Id
 	@GeneratedValue
 	@Column(name = "id")
@@ -36,7 +38,7 @@ public class Account implements Serializable{
 	private String password;
 	@Column(name = "accountid")
 	private int accountid;
-	
+	//Constructor for Account without ID because id is a generated value
 	public Account( String pass, String name, String location, int accountID) {
 		accountid = accountID;
 		this.location = location;
