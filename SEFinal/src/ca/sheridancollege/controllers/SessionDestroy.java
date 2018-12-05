@@ -39,11 +39,11 @@ public class SessionDestroy extends HttpServlet {
 	protected void doPost(HttpServletRequest request, HttpServletResponse response)
 			throws ServletException, IOException {
 
-		HttpSession session = request.getSession();
+		HttpSession session = request.getSession(); //Retrieve users current session
 		if (session != null)
-			session.invalidate();
+			session.invalidate(); //If the user has a session destroy it
 
-		response.sendRedirect("welcome.html");
+		response.sendRedirect("welcome.html"); //Redirect back to the home page
 		
 		doGet(request, response);
 	}

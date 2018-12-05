@@ -42,22 +42,22 @@ public class HomeController extends HttpServlet {
 	 */
 	protected void doPost(HttpServletRequest request, HttpServletResponse response) throws ServletException, IOException {
 			
-		String email = request.getParameter("email");
-		String loginPassword = request.getParameter("password");
-		HttpSession session = request.getSession();
+		String email = request.getParameter("email"); //Get email entered
+		String loginPassword = request.getParameter("password"); //Get password entered
+		HttpSession session = request.getSession(); //Create a session for this user
 		
-		User user = new User(email, loginPassword);
+		User user = new User(email, loginPassword); //Create a user object for the current login
 		
 		List<User> verifyLogin = dao.queryUser(email, loginPassword);
-		boolean spriteCranberry = u.login(verifyLogin);
-		if(spriteCranberry == true) {
+		boolean chkLogin = u.login(verifyLogin);
+		if(chkLogin == true) {
 			session.setAttribute("userID", verifyLogin.get(0).getId()); //This is a session for the current login
-			response.sendRedirect("Dashboard.jsp");
-			session.setAttribute("failedLog", "");
+			session.setAttribute("failedLog", ""); //Update the failed login message to be blank (since the login was successful)
+			response.sendRedirect("Dashboard.jsp"); //Redirect the user to their dash board
 		}
 		else {
-			session.setAttribute("failedLog", "Login failed. Please try again.");
-			response.sendRedirect("form.jsp");
+			session.setAttribute("failedLog", "Login failed. Please try again."); //Enable the login failed message
+			response.sendRedirect("form.jsp"); //Send users back to the same page to try again
 			
 		}
 		

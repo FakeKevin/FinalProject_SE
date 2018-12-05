@@ -46,40 +46,43 @@ public class AccountController extends HttpServlet {
 	 */
 	protected void doPost(HttpServletRequest request, HttpServletResponse response) throws ServletException, IOException {
 		
-		String selectedOption = request.getParameter("menu");
+		String selectedOption = request.getParameter("menu"); //Get parameter for which option was clicked
 		
-		HttpSession session = request.getSession();
+		HttpSession session = request.getSession(); //Retrieve the user's session
 		int accountID = (int) session.getAttribute("userID"); //Get the ID for the current logged in user
 		
-		String location = request.getParameter("location");
-		String username = request.getParameter("username");
-		String accountPassword = request.getParameter("password");
+		//In case the user chose to add a new account to store
+		String location = request.getParameter("location"); //Get the site the user is storing their password for
+		String username = request.getParameter("username"); //Take the user name for that site
+		String accountPassword = request.getParameter("password"); //Take the password for that site (this will be made stronger)
 		
 		switch(selectedOption) {
-		case "Save":
-			e.setRawPassword(accountPassword);
+		case "Save": //Should the user choose to store a new account
+			e.setRawPassword(accountPassword); //Send the password given to the encryption function
 			try {
-				e.process();
+				e.process(); //Attempt to hash + salt the password for a stronger one
 			} catch (NoSuchAlgorithmException e1) {	
 				e1.printStackTrace();
 			}
-			String encPassword = e.getEncPassword();
+			String encPassword = e.getEncPassword(); //Retrieve the hashed + salted password
 			
 			
-			Account newAccount = new Account(encPassword, username, location, accountID);
+			Account newAccount = new Account(encPassword, username, location, accountID); //Create new account object to be inserted into the database
 			
-			dao.insertorUpdateAccount(newAccount);
+			dao.insertorUpdateAccount(newAccount); //Insert account into the database
 			break;
-		case "Delete":
-			int deleteID = Integer.valueOf(request.getParameter("id"));
-			dao.deleteAccountByID(deleteID);
+		case "Delete": //Should an account entry wish to be deleted
+			int deleteID = Integer.valueOf(request.getParameter("id")); //Get the ID of the account checked off
+			dao.deleteAccountByID(deleteID); //Delete the account based on the ID selected
 			break;
-		case "Retrieve":
+		case "Retrieve": //Placeholder for retrieve
 			break;
 		default:
-			response.sendRedirect("Dashboard.jsp");
+			response.sendRedirect("Dashboard.jsp"); //Any other activities will refresh the page
 			break;	
 		}	
+		
+		//Retrieve any changes/additions to accounts after any function is done
 		List<Account> retrieved = dao.displayAccount(accountID);
 		request.setAttribute("retrieved", retrieved);
 		request.getRequestDispatcher("Dashboard.jsp").forward(request, response);
