@@ -1,4 +1,4 @@
-# SEFinal
+# Software Engineering Final Project
 
 ## DELIVERABLES
 
